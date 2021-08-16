@@ -1,10 +1,7 @@
 package com.example.youtubeplayertest
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.example.baseux.components.LayoutId
 import com.example.baseux.rigger.FragmentRigger
@@ -18,6 +15,7 @@ class PlayerFragment : FragmentRigger() {
         get() = binding as FragmentPlayerBinding
 
     private var mVideoPlayerManager: VideoPlayerManager? = null
+
     companion object {
 
         private const val URL = "url"
@@ -49,22 +47,23 @@ class PlayerFragment : FragmentRigger() {
                 endId: Int,
                 progress: Float
             ) {
-//                (activity as MainActivity).also {
-//                    it.mainMotionLayout.progress = abs(progress)
-//                }
-                if(progress == 0f) {
+                if (progress < 0.1f) {
+                    (activity as MainActivity).hideShowBottomNavigation(true)
                     mBinding.videoView.changeViewHeight(55)
                 } else {
+                    (activity as MainActivity).hideShowBottomNavigation(false)
                     mBinding.videoView.changeViewHeight(250)
                 }
             }
+
             override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
-                if(motionLayout != null && motionLayout.currentState == R.id.collapsed) {
+                if (motionLayout != null && motionLayout.currentState == R.id.collapsed) {
                     mBinding.videoView.changeViewHeight(55)
                 } else {
                     mBinding.videoView.changeViewHeight(250)
                 }
             }
+
             override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
             }

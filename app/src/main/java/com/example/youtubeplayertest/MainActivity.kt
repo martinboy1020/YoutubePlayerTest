@@ -2,6 +2,7 @@ package com.example.youtubeplayertest
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.example.baseux.components.LayoutId
 import com.example.baseux.components.NavHosttId
 import com.example.baseux.rigger.ActivityRigger
@@ -59,6 +60,11 @@ class MainActivity : ActivityRigger() {
             }
             false
         }
+    }
+
+    fun hideShowBottomNavigation(isShow: Boolean) {
+        Log.d("tag111111", "hideShowBottomNavigation(): $isShow")
+        mBinding.bottomNavigationView.visibility = if (isShow) View.VISIBLE else View.GONE
     }
 
     override fun onBackPressed() {
