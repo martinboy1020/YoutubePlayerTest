@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">YoutubePlayerTest</string>
+    <string name="nav1">比分</string>
+    <string name="nav2">竞猜</string>
+    <string name="nav3">首页</string>
+    <string name="nav4">焦点</string>
+    <string name="nav5">资料库</string>
+</resources>

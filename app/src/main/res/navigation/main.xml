@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/homeFragment">
+
+    <!-- app:popUpTo 指定某個頁面放到在上層,其他Fragment會被移除掉
+    app:popUpToInclusive="true" 被放入在上層的Fragment也會將之前已存在的Fragment一起移除避免重複
+    如要回到首頁時想要將之前的Fragment清掉可使用-->
+
+    <!--使用fragment頁籤 在Activity XML裡面必須要使用官方的NavHostFragment -->
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.youtubeplayertest.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_to_homeFragment"
+            app:destination="@+id/homeFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_to_matchListFragment"
+            app:destination="@+id/matchListFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_to_spotlightFragment"
+            app:destination="@+id/spotlightFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_to_soccer_database"
+            app:destination="@+id/soccerDataBaseHomeFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_to_home_recent_match_detail"
+            app:destination="@+id/homeRecentMatchDetailDialogFragment" />
+
+        <action
+            android:id="@+id/action_to_home_sort"
+            app:destination="@+id/homeSortDialogFrgment" />
+
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/matchListFragment"-->
+<!--        android:name="com.nt.universalscore.ui.matchList.view.MatchListFragment"-->
+<!--        android:label="MatchListFragment"-->
+<!--        tools:layout="@layout/fragment_match_list">-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_matchDetailActivity"-->
+<!--            app:destination="@+id/matchDetailActivity" />-->
+
+<!--        &lt;!&ndash;        <action&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:id="@+id/action_to_filterActivity"&ndash;&gt;-->
+<!--        &lt;!&ndash;            app:destination="@+id/filterActivity" />&ndash;&gt;-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_matchDetailFragment"-->
+<!--            app:destination="@+id/matchDetailFragment" />-->
+
+<!--    </fragment>-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/spotlightFragment"-->
+<!--        android:name="com.nt.universalscore.ui.spotlight.view.SpotLightFragment"-->
+<!--        android:label="MatchListFragment"-->
+<!--        tools:layout="@layout/fragment_spotlight">-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_spotlight_select_dialog"-->
+<!--            app:destination="@+id/spotLightChatShowSelectDialogFragment"/>-->
+
+<!--        <action android:id="@+id/action_to_news_activity"-->
+<!--            app:destination="@+id/newsActivity"/>-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_matchDetailFragment"-->
+<!--            app:destination="@+id/matchDetailFragment" />-->
+
+<!--    </fragment>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/spotLightChatShowSelectDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.spotlight.view.SpotLightChatShowSelectDialogFragment"-->
+<!--        android:label="spotLightChatShowSelectDialogFragment"-->
+<!--        tools:layout="@layout/dialog_spot_light_chat_user_select_dialog">-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_spot_light_chat_report"-->
+<!--            app:destination="@+id/spotLightChatShowReportDialogFragment"/>-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_spot_light_chat_block"-->
+<!--            app:destination="@+id/spotLightChatShowBlockDialogFragment"/>-->
+<!--    </dialog>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/spotLightChatShowReportDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.spotlight.view.SpotLightChatShowReportDialogFragment"-->
+<!--        android:label="SpotLightChatShowReportDialogFragment"-->
+<!--        tools:layout="@layout/dialog_spot_light_chat_user_report">-->
+<!--        <argument-->
+<!--            android:name="reportMsgID"-->
+<!--            app:argType="string" />-->
+<!--    </dialog>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/spotLightChatShowBlockDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.spotlight.view.SpotLightChatShowBlockDialogFragment"-->
+<!--        android:label="SpotLightChatShowBlockDialogFragment"-->
+<!--        tools:layout="@layout/dialog_spot_light_chat_user_block">-->
+<!--        <argument-->
+<!--            android:name="blockMsgID"-->
+<!--            app:argType="string" />-->
+<!--    </dialog>-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/soccerDataBaseHomeFragment"-->
+<!--        android:name="com.nt.universalscore.ui.soccerDatabase.view.SoccerDatabaseHomeFragment"-->
+<!--        android:label="SoccerDataBaseHomeFragment"-->
+<!--        tools:layout="@layout/fragment_soccer_database_home"/>-->
+
+<!--    <fragment-->
+<!--        android:id="@+id/matchDetailFragment"-->
+<!--        android:name="com.nt.universalscore.ui.matchDetail.view.MatchDetailFragment"-->
+<!--        android:label="MatchDetailFragment"-->
+<!--        tools:layout="@layout/fragment_match_detail">-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_recent_record_sort"-->
+<!--            app:destination="@+id/recentRecordSortDialogFragment"/>-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_select_dialog"-->
+<!--            app:destination="@+id/matchChatSelectDialogFragment"/>-->
+
+
+<!--    </fragment>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/recentRecordSortDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.matchDetail.view.RecentRecordSortDialogFragment"-->
+<!--        android:label="RecentRecordSortDialogFragment"-->
+<!--        tools:layout="@layout/dialog_fragment_recent_record_sort">-->
+<!--    </dialog>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/matchChatSelectDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.matchDetail.view.MatchChatShowSelectDialogFragment"-->
+<!--        android:label="MatchChatShowSelectDialogFragment"-->
+<!--        tools:layout="@layout/dialog_chat_user_select_dialog">-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_chat_report"-->
+<!--            app:destination="@+id/matchChatShowReportDialogFragment"/>-->
+
+<!--        <action-->
+<!--            android:id="@+id/action_to_chat_block"-->
+<!--            app:destination="@+id/matchChatShowBlockDialogFragment"/>-->
+
+<!--    </dialog>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/matchChatShowReportDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.matchDetail.view.MatchChatShowReportDialogFragment"-->
+<!--        android:label="MacthChatShowReportDialogFragment"-->
+<!--        tools:layout="@layout/dialog_chat_user_report">-->
+
+<!--        <argument-->
+<!--            android:name="blockMsgID"-->
+<!--            app:argType="string" />-->
+<!--    </dialog>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/matchChatShowBlockDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.matchDetail.view.MatchChatShowBlockDialogFragment"-->
+<!--        android:label="MatchChatShowBlockDialogFragment"-->
+<!--        tools:layout="@layout/dialog_chat_user_block">-->
+
+<!--        <argument-->
+<!--            android:name="blockMsgID"-->
+<!--            app:argType="string" />-->
+<!--    </dialog>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/homeRecentMatchDetailDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.home.view.HomeRecentMatchDetailDialogFragment"-->
+<!--        android:label="HomeRecentMatchDetailDialogFragment"-->
+<!--        tools:layout="@layout/dialog_fragment_home_recent_match_detail">-->
+
+<!--        <argument-->
+<!--            android:name="leagueTeamData"-->
+<!--            app:argType="com.nt.universalscore.datacenter.dataBean.LeagueTeamData" />-->
+
+<!--    </dialog>-->
+
+<!--    <dialog-->
+<!--        android:id="@+id/homeSortDialogFrgment"-->
+<!--        android:name="com.nt.universalscore.ui.home.view.HomeSortDialogFragment"-->
+<!--        android:label="HomeSortDialogFragment"-->
+<!--        tools:layout="@layout/dialog_fragment_home_short_upcoming_events">-->
+
+<!--    </dialog>-->
+
+
+<!--    <dialog-->
+<!--        android:id="@+id/loginDialogFragment"-->
+<!--        android:name="com.nt.universalscore.ui.login.view.LoginDialogFragment"-->
+<!--        android:label="LoginDialogFragment"-->
+<!--        tools:layout="@layout/dialog_fragment_login"/>-->
+
+<!--    <activity-->
+<!--        android:id="@+id/matchDetailActivity"-->
+<!--        android:name="com.nt.universalscore.ui.matchDetail.MatchDetailActivity"-->
+<!--        android:label="MatchDetailActivity"-->
+<!--        tools:layout="@layout/activity_match_detail" />-->
+
+<!--    <activity-->
+<!--        android:id="@+id/filterActivity"-->
+<!--        android:name="com.nt.universalscore.ui.filterMatch.FilterActivity"-->
+<!--        android:label="FilterActivity"-->
+<!--        tools:layout="@layout/activity_filter" />-->
+
+<!--    <activity-->
+<!--        android:id="@+id/soccerDatabaseDetailActivity"-->
+<!--        android:name="com.nt.universalscore.ui.soccerDatabaseDetail.SoccerDatabaseDetailActivity"-->
+<!--        android:label="SoccerDatabaseDetailActivity"-->
+<!--        tools:layout="@layout/activity_soccer_database_detail" />-->
+
+<!--    <activity-->
+<!--        android:id="@+id/newsActivity"-->
+<!--        android:name="com.nt.universalscore.ui.news.NewsActivity"-->
+<!--        android:label="NewsActivity"-->
+<!--        tools:layout="@layout/activity_news" />-->
+
+</navigation>

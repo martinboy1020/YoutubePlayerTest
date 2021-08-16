@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.example.youtubeplayertest.SingleViewTouchableMotionLayout
+        android:id="@+id/videoMotionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        app:layoutDescription="@xml/player_scene"
+        app:layout_collapseMode="parallax">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/videoViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/videoView"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_marginEnd="0dp"-->
+<!--            android:elevation="10dp"-->
+<!--            android:paddingEnd="@dimen/video_view_right_padding"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/videoViewContainer"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/videoViewContainer"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/videoViewContainer"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/videoViewContainer"-->
+<!--            android:background="@color/design_default_color_primary_dark" />-->
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="0dp"
+            android:elevation="10dp"
+            android:paddingEnd="@dimen/video_view_right_padding"
+            app:layout_constraintBottom_toBottomOf="@+id/videoViewContainer"
+            app:layout_constraintEnd_toEndOf="@+id/videoViewContainer"
+            app:layout_constraintStart_toStartOf="@+id/videoViewContainer"
+            app:layout_constraintTop_toTopOf="@+id/videoViewContainer"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            android:clickable="true"
+            android:elevation="10dp"
+            android:focusable="true"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/videoViewContainer">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:nestedScrollingEnabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/view_item_player"
+                tools:itemCount="10"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.example.youtubeplayertest.SingleViewTouchableMotionLayout>
+
+</layout>

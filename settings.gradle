@@ -1,0 +1,3 @@
+include ':baseUx'
+include ':app'
+rootProject.name = "YoutubePlayerTest"
