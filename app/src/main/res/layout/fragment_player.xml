@@ -21,40 +21,64 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/videoView"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginEnd="0dp"-->
-<!--            android:elevation="10dp"-->
-<!--            android:paddingEnd="@dimen/video_view_right_padding"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/videoViewContainer"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/videoViewContainer"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/videoViewContainer"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/videoViewContainer"-->
-<!--            android:background="@color/design_default_color_primary_dark" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/videoView"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_marginEnd="0dp"-->
+        <!--            android:elevation="10dp"-->
+        <!--            android:paddingEnd="@dimen/video_view_right_padding"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/videoViewContainer"-->
+        <!--            app:layout_constraintEnd_toEndOf="@+id/videoViewContainer"-->
+        <!--            app:layout_constraintStart_toStartOf="@+id/videoViewContainer"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/videoViewContainer"-->
+        <!--            android:background="@color/design_default_color_primary_dark" />-->
 
-        <VideoView
+<!--                <VideoView-->
+<!--                    android:id="@+id/videoView"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_marginEnd="0dp"-->
+<!--                    android:elevation="10dp"-->
+<!--                    android:paddingEnd="@dimen/video_view_right_padding"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@+id/videoViewContainer"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/videoViewContainer"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/videoViewContainer"-->
+<!--                    app:layout_constraintTop_toTopOf="@+id/videoViewContainer"/>-->
+
+        <com.example.youtubeplayertest.stream_video_widget.StreamVideoView
             android:id="@+id/videoView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="0dp"
             android:elevation="10dp"
-            android:paddingEnd="@dimen/video_view_right_padding"
+            android:paddingEnd="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/videoViewContainer"
             app:layout_constraintEnd_toEndOf="@+id/videoViewContainer"
             app:layout_constraintStart_toStartOf="@+id/videoViewContainer"
-            app:layout_constraintTop_toTopOf="@+id/videoViewContainer"/>
+            app:layout_constraintTop_toTopOf="@+id/videoViewContainer" />
+
+<!--        <com.google.android.exoplayer2.ui.PlayerView-->
+<!--            android:id="@+id/videoView"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:elevation="10dp"-->
+<!--            android:paddingEnd="0dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/videoViewContainer"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/videoViewContainer"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/videoViewContainer"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/videoViewContainer"-->
+<!--            app:resize_mode="fill" />-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="0dp"
+            android:background="@color/white"
             android:clickable="true"
             android:elevation="10dp"
             android:focusable="true"
-            android:background="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,8 +93,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:listitem="@layout/view_item_player"
-                tools:itemCount="10"/>
+                tools:itemCount="10"
+                tools:listitem="@layout/view_item_player" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,6 +9,7 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import com.example.baseux.components.LayoutId
 import com.example.baseux.rigger.FragmentRigger
 import com.example.youtubeplayertest.databinding.FragmentPlayerBinding
+import com.example.youtubeplayertest.stream_video_widget.VideoPlayerManager
 
 @LayoutId(R.layout.fragment_player)
 class PlayerFragment : FragmentRigger() {
@@ -16,6 +17,7 @@ class PlayerFragment : FragmentRigger() {
     private val mBinding: FragmentPlayerBinding
         get() = binding as FragmentPlayerBinding
 
+    private var mVideoPlayerManager: VideoPlayerManager? = null
     companion object {
 
         private const val URL = "url"
@@ -29,8 +31,11 @@ class PlayerFragment : FragmentRigger() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mBinding.videoView.setVideoPath("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
-        mBinding.videoView.start()
+//        mVideoPlayerManager = VideoPlayerManager(this.requireContext(), mBinding.videoView)
+//        mVideoPlayerManager?.initializeExoplayer("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
+        mBinding.videoView.setStreamVideo("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
+//        mBinding.videoView.setVideoPath("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
+//        mBinding.videoView.start()
 
 //        mBinding.recyclerView.apply {
 //            adapter = SimpleAdapter(layoutResId = R.layout.view_item_player)
@@ -47,8 +52,19 @@ class PlayerFragment : FragmentRigger() {
 //                (activity as MainActivity).also {
 //                    it.mainMotionLayout.progress = abs(progress)
 //                }
+                if(progress == 0f) {
+                    mBinding.videoView.changeViewHeight(55)
+                } else {
+                    mBinding.videoView.changeViewHeight(250)
+                }
             }
-            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {}
+            override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                if(motionLayout != null && motionLayout.currentState == R.id.collapsed) {
+                    mBinding.videoView.changeViewHeight(55)
+                } else {
+                    mBinding.videoView.changeViewHeight(250)
+                }
+            }
             override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
             override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
             }
@@ -60,9 +76,16 @@ class PlayerFragment : FragmentRigger() {
         return mBinding.videoMotionLayout
     }
 
+    fun releaseVideoPlayer() {
+        mBinding.videoView.releasePlayer()
+//        mVideoPlayerManager?.releasePlayer()
+    }
+
     fun refreshNewVideo() {
-        mBinding.videoView.setVideoPath("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
-        mBinding.videoView.start()
+//        mVideoPlayerManager?.changeVideoResource("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
+        mBinding.videoView.changeVideoSource("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
+//        mBinding.videoView.setVideoPath("https://videocdn.bodybuilding.com/video/mp4/62000/62792m.mp4")
+//        mBinding.videoView.start()
     }
 
 }

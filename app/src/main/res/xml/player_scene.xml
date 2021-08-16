@@ -15,21 +15,21 @@
             app:touchAnchorSide="top" />
 
         <KeyFrameSet>
-            <KeyAttribute
-                app:framePosition="0"
-                app:motionTarget="@id/videoView">
-                <CustomAttribute
-                    app:attributeName="EndPadding"
-                    app:customDimension="@dimen/video_view_right_padding" />
-            </KeyAttribute>
+<!--            <KeyAttribute-->
+<!--                app:framePosition="0"-->
+<!--                app:motionTarget="@id/videoView">-->
+<!--                <CustomAttribute-->
+<!--                    app:attributeName="EndPadding"-->
+<!--                    app:customDimension="@dimen/video_view_right_padding" />-->
+<!--            </KeyAttribute>-->
 
-            <KeyAttribute
-                app:framePosition="20"
-                app:motionTarget="@id/videoView">
-                <CustomAttribute
-                    app:attributeName="EndPadding"
-                    app:customDimension="0dp" />
-            </KeyAttribute>
+<!--            <KeyAttribute-->
+<!--                app:framePosition="20"-->
+<!--                app:motionTarget="@id/videoView">-->
+<!--                <CustomAttribute-->
+<!--                    app:attributeName="EndPadding"-->
+<!--                    app:customDimension="0dp" />-->
+<!--            </KeyAttribute>-->
 
             <KeyAttribute
                 android:alpha="0"

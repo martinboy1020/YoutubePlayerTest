@@ -1,6 +1,7 @@
 package com.example.youtubeplayertest
 
 import android.os.Bundle
+import android.util.Log
 import com.example.baseux.components.LayoutId
 import com.example.baseux.components.NavHosttId
 import com.example.baseux.rigger.ActivityRigger
@@ -61,6 +62,7 @@ class MainActivity : ActivityRigger() {
     }
 
     override fun onBackPressed() {
+        Log.d("tag111111", "checkVideoFragmentIsExpend(): " + checkVideoFragmentIsExpend())
         if (checkVideoFragmentIsExpend()) {
             (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
                 if (it != null) {
@@ -68,6 +70,13 @@ class MainActivity : ActivityRigger() {
                 }
             }
         } else {
+            (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
+                if (it != null) {
+                    (it as PlayerFragment).releaseVideoPlayer()
+                    supportFragmentManager.beginTransaction().remove(it)
+                        .commit()
+                }
+            }
             super.onBackPressed()
         }
     }

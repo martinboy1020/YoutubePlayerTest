@@ -5,4 +5,7 @@
     <string name="nav3">首页</string>
     <string name="nav4">焦点</string>
     <string name="nav5">资料库</string>
+    <string name="live_streaming_not_exist">暫無直播</string>
+    <string name="live_streaming_loading">連線載入中~!</string>
+    <string name="live_streaming_play_fail">影片播放失敗!</string>
 </resources>

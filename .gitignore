@@ -1,15 +1,26 @@
 *.iml
 .gradle
 /local.properties
+# Intellij
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/sonarlint
+.idea
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea/jarRepositories.xml
+/.idea/vcs.xml
+/.idea/misc.xml
+/.idea/gradle.xml
+/.idea/compiler.xml
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 .cxx
-local.properties
+/src/generated/
