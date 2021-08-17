@@ -69,6 +69,13 @@ class PlayerFragment : FragmentRigger() {
             }
         })
         mBinding.videoMotionLayout.transitionToEnd()
+        mBinding.btnPlayPause.setOnClickListener {
+            if(mBinding.videoView.checkPlayerPlaying() == true) {
+                mBinding.videoView.pausePlayer()
+            } else {
+                mBinding.videoView.startPlayer()
+            }
+        }
     }
 
     fun getVideoMotionLayout(): SingleViewTouchableMotionLayout {

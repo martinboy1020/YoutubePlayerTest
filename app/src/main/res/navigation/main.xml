@@ -25,31 +25,31 @@
 
         <action
             android:id="@+id/action_to_matchListFragment"
-            app:destination="@+id/matchListFragment"
+            app:destination="@+id/otherPageFragment"
             app:launchSingleTop="true"
             app:popUpToInclusive="true" />
 
         <action
             android:id="@+id/action_to_spotlightFragment"
-            app:destination="@+id/spotlightFragment"
+            app:destination="@+id/otherPageFragment"
             app:launchSingleTop="true"
             app:popUpToInclusive="true" />
 
         <action
             android:id="@+id/action_to_soccer_database"
-            app:destination="@+id/soccerDataBaseHomeFragment"
+            app:destination="@+id/otherPageFragment"
             app:launchSingleTop="true"
             app:popUpToInclusive="true" />
 
-        <action
-            android:id="@+id/action_to_home_recent_match_detail"
-            app:destination="@+id/homeRecentMatchDetailDialogFragment" />
-
-        <action
-            android:id="@+id/action_to_home_sort"
-            app:destination="@+id/homeSortDialogFrgment" />
-
     </fragment>
+
+    <fragment
+        android:id="@+id/otherPageFragment"
+        android:name="com.example.youtubeplayertest.OtherPageFragment"
+        android:label="MatchListFragment"
+        tools:layout="@layout/fragment_other">
+    </fragment>
+
 
 <!--    <fragment-->
 <!--        android:id="@+id/matchListFragment"-->

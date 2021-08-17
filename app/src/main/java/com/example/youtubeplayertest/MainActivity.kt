@@ -3,6 +3,7 @@ package com.example.youtubeplayertest
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.Fragment
 import com.example.baseux.components.LayoutId
 import com.example.baseux.components.NavHosttId
 import com.example.baseux.rigger.ActivityRigger
@@ -25,8 +26,10 @@ class MainActivity : ActivityRigger() {
 
     private fun initBottomNavigationBar(binding: ActivityMainBinding) {
         binding.bottomNavigationView.selectedItemId = R.id.nav_homeFragment
+        mainActivityViewModel.nowPage.value = R.id.nav_homeFragment
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             if (it.isChecked) return@setOnNavigationItemSelectedListener true
+            mainActivityViewModel.nowPage.value = it.itemId
             when (it.itemId) {
                 R.id.nav_matchListFragment -> {
                     transFragment(R.id.action_to_matchListFragment)
@@ -62,6 +65,10 @@ class MainActivity : ActivityRigger() {
         }
     }
 
+    fun getNowPage(): Int? {
+        return mainActivityViewModel.nowPage.value
+    }
+
     fun hideShowBottomNavigation(isShow: Boolean) {
         Log.d("tag111111", "hideShowBottomNavigation(): $isShow")
         mBinding.bottomNavigationView.visibility = if (isShow) View.VISIBLE else View.GONE
@@ -69,22 +76,39 @@ class MainActivity : ActivityRigger() {
 
     override fun onBackPressed() {
         Log.d("tag111111", "checkVideoFragmentIsExpend(): " + checkVideoFragmentIsExpend())
-        if (checkVideoFragmentIsExpend()) {
-            (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
-                if (it != null) {
-                    (it as PlayerFragment).getVideoMotionLayout().transitionToStart()
+//        if (checkVideoFragmentIsExpend()) {
+//            (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
+//                if (it != null) {
+//                    (it as PlayerFragment).getVideoMotionLayout().transitionToStart()
+//                }
+//            }
+//        } else {
+            Log.d("tag111111", "supportFragmentManager.backStackEntryCount: " + supportFragmentManager.backStackEntryCount)
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                val navHostFragment: Fragment? =
+                    this.supportFragmentManager.findFragmentById(R.id.mainActivityNavHostFragment)
+                val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
+                (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
+                    if (it != null) {
+                        (it as PlayerFragment).releaseVideoPlayer()
+                        supportFragmentManager.beginTransaction().remove(it)
+                            .commit()
+                        hideShowBottomNavigation(true)
+                    } else {
+                        finishAffinity()
+                    }
                 }
+            } else {
+//                (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
+//                    if (it != null) {
+//                        (it as PlayerFragment).releaseVideoPlayer()
+//                        supportFragmentManager.beginTransaction().remove(it)
+//                            .commit()
+//                    }
+//                }
+                super.onBackPressed()
             }
-        } else {
-            (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
-                if (it != null) {
-                    (it as PlayerFragment).releaseVideoPlayer()
-                    supportFragmentManager.beginTransaction().remove(it)
-                        .commit()
-                }
-            }
-            super.onBackPressed()
-        }
+//        }
     }
 
     fun replaceVideoFragment(url: String) {
