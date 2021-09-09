@@ -90,10 +90,15 @@ class MainActivity : ActivityRigger() {
                 val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
                 (supportFragmentManager.findFragmentById(R.id.fragment_video_player_view)).also {
                     if (it != null) {
-                        (it as PlayerFragment).releaseVideoPlayer()
-                        supportFragmentManager.beginTransaction().remove(it)
-                            .commit()
-                        hideShowBottomNavigation(true)
+                        (it as PlayerFragment)
+                       if(it.checkIsFullScreen()) {
+                           it.setFullScreen()
+                       } else {
+                           it.releaseVideoPlayer()
+                           supportFragmentManager.beginTransaction().remove(it)
+                               .commit()
+                           hideShowBottomNavigation(true)
+                       }
                     } else {
                         finishAffinity()
                     }

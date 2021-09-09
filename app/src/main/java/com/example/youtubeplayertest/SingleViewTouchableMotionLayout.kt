@@ -8,7 +8,8 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
 
-class SingleViewTouchableMotionLayout(context: Context, attributeSet: AttributeSet? = null) : MotionLayout(context, attributeSet) {
+class SingleViewTouchableMotionLayout(context: Context, attributeSet: AttributeSet? = null) :
+    MotionLayout(context, attributeSet) {
 
     private val viewToDetectTouch by lazy {
         findViewById<View>(R.id.videoViewContainer) //TODO move to Attributes
@@ -16,6 +17,7 @@ class SingleViewTouchableMotionLayout(context: Context, attributeSet: AttributeS
     private val viewRect = Rect()
     private var touchStarted = false
     private val transitionListenerList = mutableListOf<TransitionListener?>()
+    var enableSwipe = true
 
     init {
         addTransitionListener(object : TransitionListener {
@@ -60,24 +62,30 @@ class SingleViewTouchableMotionLayout(context: Context, attributeSet: AttributeS
         transitionListenerList += listener
     }
 
-    private val gestureDetector = GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
-        override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
-            transitionToEnd()
-            return false
-        }
-    })
+    private val gestureDetector =
+        GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onSingleTapConfirmed(e: MotionEvent?): Boolean {
+                transitionToEnd()
+                return false
+            }
+        })
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        when (event.actionMasked) {
-            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                touchStarted = false
-                return super.onTouchEvent(event)
+        if (enableSwipe) {
+            when (event.actionMasked) {
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    touchStarted = false
+                    return super.onTouchEvent(event)
+                }
             }
+            if (!touchStarted) {
+                viewToDetectTouch.getHitRect(viewRect)
+                touchStarted = viewRect.contains(event.x.toInt(), event.y.toInt())
+            }
+            return touchStarted && super.onTouchEvent(event)
+        } else {
+            return true
         }
-        if (!touchStarted) {
-            viewToDetectTouch.getHitRect(viewRect)
-            touchStarted = viewRect.contains(event.x.toInt(), event.y.toInt())
-        }
-        return touchStarted && super.onTouchEvent(event)
+
     }
 }

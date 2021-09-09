@@ -114,8 +114,9 @@ class StreamVideoView @JvmOverloads constructor(
         val videoViewParams: ViewGroup.LayoutParams =
             layoutPlayerView?.layoutParams as ViewGroup.LayoutParams
         if (checkMobileRotationIsLandScape(newConfig, activity)) {
-            videoViewParams.height =
-                resources.displayMetrics.heightPixels - getStatusBarHeight(activity)
+//            videoViewParams.height =
+//                resources.displayMetrics.heightPixels - getStatusBarHeight(activity)
+            videoViewParams.height = resources.displayMetrics.heightPixels
         } else {
             videoViewParams.height = convertDpToPixel(activity, this.viewHeight.toFloat()).toInt()
         }
